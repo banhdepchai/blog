@@ -42,3 +42,4 @@ namespace Blog.Data.SeedWorks
 			_dbSet.RemoveRange(entities);
 		}
 	}
+}
