@@ -1,3 +1,4 @@
+using Blog.Api;
 using Blog.Core.Identity;
 using Blog.Data;
 using Microsoft.AspNetCore.Identity;
@@ -55,5 +56,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Seeding Data
+app.MigrateDatabase();
 
 app.Run();
