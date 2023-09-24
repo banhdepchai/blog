@@ -4,10 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Blog.Core.Models.Content
 {
-	public class PostInListDto
+	public class CreateUpdatePostRequest
 	{
-		public Guid Id { get; set; }
-
 		public required string Name { get; set; }
 
 		public required string Slug { get; set; }
@@ -17,14 +15,21 @@ namespace Blog.Core.Models.Content
 
 		public string? Thumbnail { get; set; }
 
-		public int ViewCount { get; set; }
-		public DateTime DateCreated { get; set; }
+		public Guid CategoryId { get; set; }
+
+		public string? Content { get; set; }
+
+		public string? Source { get; set; }
+
+		public string? Tags { get; set; }
+
+		public string? SeoDescription { get; set; }
 
 		public class AutoMapperProfiles : Profile
 		{
-			public AutoMapperProfiles() 
+			public AutoMapperProfiles()
 			{
-				CreateMap<Post, PostInListDto>();
+				CreateMap<CreateUpdatePostRequest, Post>();
 			}
 		}
 	}
