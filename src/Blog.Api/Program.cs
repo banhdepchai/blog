@@ -1,4 +1,6 @@
 using Blog.Api;
+using Blog.Api.Services;
+using Blog.Core.ConfigOptions;
 using Blog.Core.Identity;
 using Blog.Core.Models.Content;
 using Blog.Core.Repositories;
@@ -60,7 +62,15 @@ foreach (var service in services)
 	}
 }
 
+// AutoMapper
 builder.Services.AddAutoMapper(typeof(PostInListDto));
+
+// Authen and Author
+builder.Services.Configure<JwtTokenSettings>(configuration.GetSection("JwtTokenSettings"));
+builder.Services.AddScoped<SignInManager<AppUser>, SignInManager<AppUser>>();
+builder.Services.AddScoped<UserManager<AppUser>, UserManager<AppUser>>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<RoleManager<AppRole>, RoleManager<AppRole>>();
 
 // Default Config for ASP.NET Core
 builder.Services.AddControllers();
