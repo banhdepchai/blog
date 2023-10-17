@@ -1,4 +1,5 @@
 using Blog.Api;
+using Blog.Api.Filters;
 using Blog.Api.Services;
 using Blog.Core.ConfigOptions;
 using Blog.Core.Identity;
